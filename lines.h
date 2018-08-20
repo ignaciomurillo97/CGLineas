@@ -3,13 +3,16 @@
  * Escuela de Ingenieria en Computacion
  * Computer Graphics
  *
- * Programa: Mesa Example
- * Archivo:  mesa_example.h
+ * Programa: line
+ * Archivo:  line.h
  */
-
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
+#ifndef LINES_H
+#define LINES_H
 
 #define H_SIZE 400
 #define V_SIZE 400
+
+void plot(int x, int y);
+void setColor(float r, float g, float b);
+
+#endif

@@ -6,10 +6,14 @@
  * Programa: lineas
  * Archivo:  lineas.c
  */
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
 
 #include "lines.h"
 #include "malloc.h"
 #include "color.h"
+#include "incremental1.h"
 
 void draw_scene ();
 
@@ -18,8 +22,6 @@ COLOR *currColor;
 
 
 void render();
-void setColor(float r, float g, float b);
-void plot();
 
 int main(int argc, char** argv) {
   int i, j;
@@ -49,6 +51,10 @@ int main(int argc, char** argv) {
 
 void render() {
   int x, y;
+
+  setColor(1, 1, 1);
+  incrementalLine(10, 10, 9, 100);
+
   for (x = 0; x < H_SIZE; x++) {
     for (y = 0; y < V_SIZE; y++) {
       COLOR currentColor = buffer[x][y];

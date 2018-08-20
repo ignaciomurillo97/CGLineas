@@ -1,5 +1,5 @@
 NAME=lines
-OBJECTS=$(NAME).o
+OBJECTS=`ls *.c`
 OUTPUT=$(NAME).bin
 
 CFLAGS=-I/usr/local/Mesa-3.4/include

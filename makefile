@@ -1,6 +1,6 @@
 NAME=lines
 OBJECTS=$(NAME).o
-OUTPUT=$(NAME)
+OUTPUT=$(NAME).bin
 
 CFLAGS=-I/usr/local/Mesa-3.4/include
 #LDLIBS=-lX11 -lglut -lMesaGLU -lMesaGL -lm -lXext -lXmu

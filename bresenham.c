@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void bresenhamOctante1(int xStart, int yStart, int xEnd, int yEnd);
-void bresenhamOctante2(int xStart, int yStart, int xEnd, int yEnd);
-void bresenhamOctante3(int xStart, int yStart, int xEnd, int yEnd);
-void bresenhamOctante4(int xStart, int yStart, int xEnd, int yEnd);
+void bresenhamOctante1(int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int));
+void bresenhamOctante2(int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int));
+void bresenhamOctante3(int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int));
+void bresenhamOctante4(int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int));
 
 int deltaX, deltaY;
 
@@ -16,37 +16,37 @@ void line4(int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int)){
   if (yStart < yEnd) { // mitad superior
     if (xStart < xEnd){ // cuadrante derecho
       if (abs(deltaX) > abs(deltaY)){ // Octante 1
-        bresenhamOctante1(xStart, yStart, xEnd, yEnd);
+        bresenhamOctante1(xStart, yStart, xEnd, yEnd, plot);
       } else { // Octante 2
-        bresenhamOctante2(xStart, yStart, xEnd, yEnd);
+        bresenhamOctante2(xStart, yStart, xEnd, yEnd, plot);
       }
     }
     else{ // cuadrante izquierdo
       if (abs(deltaX) < abs(deltaY)){ // Octante 3
-        bresenhamOctante3(xStart, yStart, xEnd, yEnd);
+        bresenhamOctante3(xStart, yStart, xEnd, yEnd, plot);
       } else { // Octante 4
-        bresenhamOctante4(xStart, yStart, xEnd, yEnd);
+        bresenhamOctante4(xStart, yStart, xEnd, yEnd, plot);
       }
     }
   } else { // mitad inferior
     if (xStart < xEnd){ // cuadrante derecho
       if (abs(deltaX) > abs(deltaY)){ // Octante 8
-        bresenhamOctante4(xEnd, yEnd, xStart, yStart);
+        bresenhamOctante4(xEnd, yEnd, xStart, yStart, plot);
       } else { // Octante 7
-        bresenhamOctante3(xEnd, yEnd, xStart, yStart);
+        bresenhamOctante3(xEnd, yEnd, xStart, yStart, plot);
       }
     }
     else{ // cuadrante izquierdo
       if (abs(deltaX) < abs(deltaY)){ // Octante 6
-        bresenhamOctante2(xEnd, yEnd, xStart, yStart);
+        bresenhamOctante2(xEnd, yEnd, xStart, yStart, plot);
       } else { // Octante 5
-        bresenhamOctante1(xEnd, yEnd, xStart, yStart);
+        bresenhamOctante1(xEnd, yEnd, xStart, yStart, plot);
       }
     }  
   }
 } 
 
-void bresenhamOctante1 (int xStart, int yStart, int xEnd, int yEnd) {
+void bresenhamOctante1 (int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int)) {
   int DeltaE, DeltaNE, d, Xp, Yp;
 
   deltaX = xEnd - xStart;
@@ -69,7 +69,7 @@ void bresenhamOctante1 (int xStart, int yStart, int xEnd, int yEnd) {
   }
 }
 
-void bresenhamOctante2 (int xStart, int yStart, int xEnd, int yEnd) {
+void bresenhamOctante2 (int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int)) {
   int DeltaN, DeltaNE, d, Xp, Yp, deltaX, deltaY;
 
   deltaX = xEnd - xStart;
@@ -94,7 +94,7 @@ void bresenhamOctante2 (int xStart, int yStart, int xEnd, int yEnd) {
   }
 }
 
-void bresenhamOctante3 (int xStart, int yStart, int xEnd, int yEnd) {
+void bresenhamOctante3 (int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int)) {
   int DeltaN, DeltaNO, d, Xp, Yp, deltaX, deltaY;
 
   deltaX = xEnd - xStart;
@@ -119,7 +119,7 @@ void bresenhamOctante3 (int xStart, int yStart, int xEnd, int yEnd) {
   }
 }
 
-void bresenhamOctante4 (int xStart, int yStart, int xEnd, int yEnd) {
+void bresenhamOctante4 (int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int)) {
   int DeltaO, DeltaNO, d, Xp, Yp, deltaX, deltaY;
 
   deltaX = xEnd - xStart;

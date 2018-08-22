@@ -1,8 +1,8 @@
 #ifndef INCREMENTALLINE_H
 #define INCREMENTALLINE_H
 
-#include"color.h"
 #include "lines.h"
-void incrementalLine(int xStart, int yStart, int xEnd, int yEnd); 
+
+void line2(int xStart, int yStart, int xEnd, int yEnd, void (*plot)(int, int)); 
 
 #endif
